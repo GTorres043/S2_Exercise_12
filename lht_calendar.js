@@ -33,18 +33,29 @@
 //Set the date displayed in the caleneder
 var thisDay = new Date("August 24, 2018");
 
-//Write the calender to the element with the id "calender"
-document.getElementById("calender").innerHTML = createCalender(thisDay);
+//Write the calendar to the element with the id "calendar"
+document.getElementById("calendar").innerHTML = createCalendar(thisDay);
 
-//create the function to generate the calender table 
+//create the function to generate the calendar table 
 
-function createCalender(calDate) {
-      var calenderHTML = "<table id='calender_table'>";
-      calenderHTML += "</table>";
-      return calenderHTML;
+function createCalendar(calDate) {
+      var calendarHTML = "<table id='calendar_table'>";
+      calendarHTML += calCaption(calDate);
+      calendarHTML += "</table>";
+      return calendarHTML;
 }
 
-//function to write the calender caption
-function calCaption(calDate)(
+//function to write the calendar caption
+function calCaption(calDate) {
       //monthName array contains the list of month names
       var monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      //determine the current month
+      var thisMonth = calDate.getMonth();
+
+      //determine vurrent year
+      var thisYear = calDate.getFullYear();
+
+      //write the caption
+      return "<caption>" + monthName[thisMonth] + " " + thisYear + "</caption>";
+}
